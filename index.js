@@ -25,17 +25,14 @@ export default class Hello extends Component {
   }
 
   render() {
-    console.log('name ', this.state.users);
     return(
       <div>
         <h1>Hello React</h1>
         <table>
-
           <tr>
             <th>Name</th>
             <th>Location</th>
           </tr>
-
           {
             this.state.users && this.state.users.map((user) => {
               return <tr key={user.userId}>
@@ -44,9 +41,6 @@ export default class Hello extends Component {
               </tr>
             })
           }
-
-
-
         </table>
       </div>
     )
