@@ -82,8 +82,12 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Hello).call(this, props));
 
+	    _this.state = {};
 	    _axios2.default.get('http://localhost:3000/users').then(function (response) {
 	      console.log(response);
+	      _this.setState({
+	        users: response.data
+	      });
 	    }).catch(function (response) {
 	      console.log(response);
 	    });
@@ -93,10 +97,49 @@
 	  _createClass(Hello, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log('name ', this.state.users);
 	      return _react2.default.createElement(
-	        'h1',
+	        'div',
 	        null,
-	        'Hello React'
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Hello React'
+	        ),
+	        _react2.default.createElement(
+	          'table',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Name'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Location'
+	            )
+	          ),
+	          this.state.users && this.state.users.map(function (user) {
+	            return _react2.default.createElement(
+	              'tr',
+	              { key: user.userId },
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                user.name
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                user.location
+	              )
+	            );
+	          })
+	        )
 	      );
 	    }
 	  }]);
