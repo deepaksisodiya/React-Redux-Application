@@ -97,10 +97,14 @@
 	  _createClass(Hello, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log('name ', this.state.users);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement(
+	          'style',
+	          null,
+	          '\n        table, th, td{\n          border: 1px solid black;\n          border-collapse: collapse;\n        }\n        th, td {\n            padding: 8px;\n        }\n        '
+	        ),
 	        _react2.default.createElement(
 	          'h1',
 	          null,

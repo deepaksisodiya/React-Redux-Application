@@ -27,6 +27,15 @@ export default class Hello extends Component {
   render() {
     return(
       <div>
+        <style>{`
+        table, th, td{
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+        }
+        `}</style>
         <h1>Hello React</h1>
         <table>
           <tr>
