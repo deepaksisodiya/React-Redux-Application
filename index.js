@@ -7,7 +7,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, hashHistory } from 'react-router'
 
-import CreateUser from './createUser';
+import CreateUser from './src/components/createUser';
 import showUsers from './src/components/ShowUsers';
 
 ReactDOM.render((

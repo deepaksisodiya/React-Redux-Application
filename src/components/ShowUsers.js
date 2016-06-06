@@ -7,8 +7,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router'
 
-import {getUsers} from './../../redux/users';
-import {store} from './../../redux/store';
+import {getUsers} from '../redux/users';
+import {store} from '../redux/store';
 
 export default class Hello extends Component {
 
