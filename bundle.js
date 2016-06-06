@@ -122,6 +122,12 @@
 	      });
 	    }
 	  }, {
+	    key: 'editUser',
+	    value: function editUser(userId) {
+	      console.log('name ', userId);
+	      this.props.history.push('/edit/' + userId);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
@@ -172,6 +178,11 @@
 	              'th',
 	              null,
 	              'Delete'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Edit'
 	            )
 	          ),
 	          this.state.users && this.state.users.map(function (user) {
@@ -198,6 +209,17 @@
 	                    } },
 	                  'Delete'
 	                )
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  { onClick: function onClick() {
+	                      _this3.editUser(user.userId);
+	                    } },
+	                  'Edit'
+	                )
 	              )
 	            );
 	          })
@@ -216,7 +238,8 @@
 	  _reactRouter.Router,
 	  { history: _reactRouter.hashHistory },
 	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: Hello }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _createUser2.default })
+	  _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _createUser2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/edit/:userId', component: _createUser2.default })
 	), document.getElementById('container'));
 
 /***/ },
@@ -28210,13 +28233,32 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CreateUser).call(this, props));
 
 	    _this.state = {};
+	    console.log('props ', props.params.userId);
+	    if (props.params.userId) {
+	      _this.getUser(props.params.userId);
+	    }
 	    return _this;
 	  }
 
 	  _createClass(CreateUser, [{
+	    key: 'getUser',
+	    value: function getUser(userId) {
+	      var _this2 = this;
+
+	      _axios2.default.get('http://localhost:3000/user/' + userId).then(function (response) {
+	        console.log(response);
+	        _this2.setState({
+	          name: response.data.name,
+	          location: response.data.location
+	        });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
 	    key: 'createUser',
 	    value: function createUser() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      (0, _axios2.default)({
 	        method: 'post',
@@ -28227,8 +28269,8 @@
 	        },
 	        headers: { "Access-Control-Allow-Origin": "*" }
 	      }).then(function (response) {
-	        console.log('name ', _this2.props);
-	        _this2.props.history.push('/');
+	        console.log('name ', _this3.props);
+	        _this3.props.history.push('/');
 	      }).catch(function (response) {
 	        console.log(response);
 	      });
@@ -28246,6 +28288,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log('state ', this.state);
 	      return _react2.default.createElement(
 	        'div',
 	        null,

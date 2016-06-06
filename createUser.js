@@ -11,6 +11,24 @@ class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    console.log('props ', props.params.userId);
+    if(props.params.userId) {
+      this.getUser(props.params.userId)
+    }
+  }
+
+  getUser(userId) {
+    axios.get('http://localhost:3000/user/' + userId)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          name: response.data.name,
+          location: response.data.location
+        });
+      })
+      .catch((response) => {
+        console.log(response);
+      });
   }
 
   createUser() {
@@ -40,6 +58,7 @@ class CreateUser extends Component {
   }
 
   render() {
+    console.log('state ', this.state);
     return(
       <div>
         <input type="text" value={this.state.name} onChange={this.handleChangeForName.bind(this)} />

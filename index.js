@@ -45,6 +45,11 @@ export default class Hello extends Component {
       });
   }
 
+  editUser(userId) {
+    console.log('name ', userId);
+    this.props.history.push('/edit/' + userId);
+  }
+
   render() {
     return(
       <div>
@@ -66,6 +71,7 @@ export default class Hello extends Component {
             <th>Name</th>
             <th>Location</th>
             <th>Delete</th>
+            <th>Edit</th>
           </tr>
           {
             this.state.users && this.state.users.map((user) => {
@@ -73,6 +79,7 @@ export default class Hello extends Component {
                 <td>{user.name}</td>
                 <td>{user.location}</td>
                 <td><a onClick={() => {this.deleteUser(user.userId)}} >Delete</a></td>
+                <td><a onClick={() => {this.editUser(user.userId)}} >Edit</a></td>
               </tr>
             })
           }
@@ -87,5 +94,6 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={Hello}></Route>
     <Route path="/create" component={CreateUser}></Route>
+    <Route path="/edit/:userId" component={CreateUser}></Route>
   </Router>
 ), document.getElementById('container'));
