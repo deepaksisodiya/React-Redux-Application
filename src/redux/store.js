@@ -3,15 +3,12 @@
  */
 
 
-import { createStore, applyMiddleware } from 'redux';
-
+import {createStore, applyMiddleware, compose} from "redux";
 import thunk from 'redux-thunk';
 
 import rootReducer from './index';
 
-// create a store that has redux-thunk middleware enabled
-const createStoreWithMiddleware = applyMiddleware(
-  thunk
-)(createStore);
-
-export const store = createStoreWithMiddleware(rootReducer);
+export const store = createStore(rootReducer, compose(
+  applyMiddleware(thunk),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+));

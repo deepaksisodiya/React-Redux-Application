@@ -27444,12 +27444,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// create a store that has redux-thunk middleware enabled
-	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default)(_redux.createStore); /**
-	                                                                                                        * Created by deepaksisodiya on 06/06/16.
-	                                                                                                        */
-
-	var store = exports.store = createStoreWithMiddleware(_index2.default);
+	var store = exports.store = (0, _redux.createStore)(_index2.default, (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk2.default), window.devToolsExtension ? window.devToolsExtension() : function (f) {
+	  return f;
+	})); /**
+	      * Created by deepaksisodiya on 06/06/16.
+	      */
 
 /***/ },
 /* 252 */
