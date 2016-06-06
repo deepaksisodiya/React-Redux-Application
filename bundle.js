@@ -87,7 +87,6 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Hello).call(this, props));
 
 	    _store.store.dispatch((0, _users.getUsers)());
-
 	    _this.state = {
 	      users: _store.store.getState().users.users || []
 	    };
@@ -109,7 +108,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log('name ', this.state.users);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -21683,7 +21681,6 @@
 	var getUsers = exports.getUsers = function getUsers() {
 	  return function (dispatch) {
 	    return _axios2.default.get('http://localhost:3000/users').then(function (response) {
-	      console.log('from user.js ', response);
 	      dispatch({ type: ALL_USERS, data: response.data });
 	    }).catch(function (response) {
 	      console.log(response);

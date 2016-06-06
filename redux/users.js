@@ -20,7 +20,6 @@ export const getUsers = () => {
   return dispatch => {
     return axios.get('http://localhost:3000/users')
       .then((response) => {
-        console.log('from user.js ', response);
         dispatch({type: ALL_USERS, data: response.data});
       })
       .catch((response) => {

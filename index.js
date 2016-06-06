@@ -15,9 +15,7 @@ export default class Hello extends Component {
 
   constructor(props) {
     super(props);
-
     store.dispatch(getUsers());
-
     this.state = {
       users: store.getState().users.users || []
     };
@@ -33,7 +31,6 @@ export default class Hello extends Component {
   }
 
   render() {
-    console.log('name ', this.state.users);
     return(
       <div>
         <style>{`
