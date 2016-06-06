@@ -72,8 +72,8 @@ class CreateEditUser extends Component {
   render() {
     return(
       <div>
-        <input type="text" value={this.state.name} onChange={this.handleChangeForName.bind(this)} />
-        <input type="text" value={this.state.location} onChange={this.handleChangeForLocation.bind(this)} />
+        <input type="text" placeholder="Name" value={this.state.name} onChange={this.handleChangeForName.bind(this)} />
+        <input type="text" placeholder="Location" value={this.state.location} onChange={this.handleChangeForLocation.bind(this)} />
         {this.props.params.userId ? <button onClick={this.editUser.bind(this)}>Update</button> : <button onClick={this.createUser.bind(this)}>Create</button>}
       </div>
     )

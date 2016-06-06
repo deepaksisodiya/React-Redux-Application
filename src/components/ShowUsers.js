@@ -54,7 +54,7 @@ export default class ShowUsers extends Component {
         }
         `}</style>
         <h1>React Redux Application</h1>
-        <button onClick={this.goToCreate.bind(this)}>Create User</button>
+        <button style={{marginBottom: '10px'}} onClick={this.goToCreate.bind(this)}>Create User</button>
         <table>
           <tr>
             <th>Name</th>

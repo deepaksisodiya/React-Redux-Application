@@ -25962,8 +25962,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChangeForName.bind(this) }),
-	        _react2.default.createElement('input', { type: 'text', value: this.state.location, onChange: this.handleChangeForLocation.bind(this) }),
+	        _react2.default.createElement('input', { type: 'text', placeholder: 'Name', value: this.state.name, onChange: this.handleChangeForName.bind(this) }),
+	        _react2.default.createElement('input', { type: 'text', placeholder: 'Location', value: this.state.location, onChange: this.handleChangeForLocation.bind(this) }),
 	        this.props.params.userId ? _react2.default.createElement(
 	          'button',
 	          { onClick: this.editUser.bind(this) },
@@ -27292,7 +27292,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.goToCreate.bind(this) },
+	          { style: { marginBottom: '10px' }, onClick: this.goToCreate.bind(this) },
 	          'Create User'
 	        ),
 	        _react2.default.createElement(
