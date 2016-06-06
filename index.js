@@ -9,27 +9,31 @@ import axios from 'axios';
 
 import {getUsers} from './redux/users';
 
+import {store} from './redux/store';
+
 export default class Hello extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
 
-    getUsers();
+    store.dispatch(getUsers());
 
-    axios.get('http://localhost:3000/users')
-      .then((response) => {
-        console.log(response);
-        this.setState({
-          users: response.data
-        });
-      })
-      .catch((response) => {
-        console.log(response);
+    this.state = {
+      users: store.getState().users.users || []
+    };
+  }
+
+  componentDidMount() {
+    store.subscribe(() => {
+      let users = store.getState().users.users;
+      this.setState({
+        users: users || []
       });
+    });
   }
 
   render() {
+    console.log('name ', this.state.users);
     return(
       <div>
         <style>{`
