@@ -4,7 +4,6 @@
 
 
 import React, {Component} from 'react';
-
 import axios from 'axios';
 
 class CreateUser extends Component {
@@ -15,7 +14,6 @@ class CreateUser extends Component {
   }
 
   createUser() {
-    console.log('state ', this.state);
     axios({
       method: 'post',
       url: 'http://localhost:3000/user',
@@ -25,15 +23,13 @@ class CreateUser extends Component {
       },
       headers: { "Access-Control-Allow-Origin": "*" }
     });
-  };
+  }
 
   handleChangeForName(e) {
-    console.log('name ', e.target.value);
     this.setState({name: e.target.value});
   }
 
   handleChangeForLocation(e) {
-    console.log('name ', e.target.value);
     this.setState({location: e.target.value});
   }
 
