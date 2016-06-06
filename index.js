@@ -35,7 +35,6 @@ export default class Hello extends Component {
   }
 
   deleteUser(userId) {
-    console.log('deleting the user ', userId);
     axios.delete('http://localhost:3000/user/' + userId)
       .then(function (response) {
         console.log(response);
@@ -46,7 +45,6 @@ export default class Hello extends Component {
   }
 
   editUser(userId) {
-    console.log('name ', userId);
     this.props.history.push('/edit/' + userId);
   }
 

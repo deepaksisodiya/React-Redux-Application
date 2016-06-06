@@ -11,7 +11,6 @@ class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    console.log('props ', props.params.userId);
     if(props.params.userId) {
       this.getUser(props.params.userId)
     }
@@ -41,8 +40,7 @@ class CreateUser extends Component {
       },
       headers: { "Access-Control-Allow-Origin": "*" }
     }).then((response) => {
-        console.log('name ', this.props);
-        this.props.history.push('/')
+      this.props.history.push('/')
     })
       .catch((response) => {
         console.log(response);
@@ -50,7 +48,6 @@ class CreateUser extends Component {
   }
 
   editUser() {
-    console.log('editing the user');
     axios.put('http://localhost:3000/user/' + this.props.params.userId, {
       name: this.state.name,
       location: this.state.location
@@ -73,7 +70,6 @@ class CreateUser extends Component {
   }
 
   render() {
-    console.log('state ', this.state);
     return(
       <div>
         <input type="text" value={this.state.name} onChange={this.handleChangeForName.bind(this)} />
