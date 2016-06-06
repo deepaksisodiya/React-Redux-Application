@@ -7,10 +7,10 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router'
 
-import {getUsers, deleteUser} from '../redux/users';
+import {getUsers, deleteUser} from '../redux/user';
 import {store} from '../redux/store';
 
-export default class Hello extends Component {
+export default class ShowUsers extends Component {
 
   constructor(props) {
     super(props);

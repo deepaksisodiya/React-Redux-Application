@@ -5,15 +5,15 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory } from 'react-router'
+import {Router, Route, hashHistory} from 'react-router'
 
-import CreateUser from './src/components/createUser';
+import CreateEditUser from './src/components/CreateEditUser';
 import showUsers from './src/components/ShowUsers';
 
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={showUsers}></Route>
-    <Route path="/create" component={CreateUser}></Route>
-    <Route path="/edit/:userId" component={CreateUser}></Route>
+    <Route path="/create" component={CreateEditUser}></Route>
+    <Route path="/edit/:userId" component={CreateEditUser}></Route>
   </Router>
 ), document.getElementById('container'));

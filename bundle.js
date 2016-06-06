@@ -56,9 +56,9 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _createUser = __webpack_require__(229);
+	var _CreateEditUser = __webpack_require__(229);
 
-	var _createUser2 = _interopRequireDefault(_createUser);
+	var _CreateEditUser2 = _interopRequireDefault(_CreateEditUser);
 
 	var _ShowUsers = __webpack_require__(249);
 
@@ -70,8 +70,8 @@
 	  _reactRouter.Router,
 	  { history: _reactRouter.hashHistory },
 	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _ShowUsers2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _createUser2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/edit/:userId', component: _createUser2.default })
+	  _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _CreateEditUser2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/edit/:userId', component: _CreateEditUser2.default })
 	), document.getElementById('container')); /**
 	                                           * Created by deepaksisodiya on 01/05/16.
 	                                           */
@@ -25882,13 +25882,13 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by deepaksisodiya on 06/06/16.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-	var CreateUser = function (_Component) {
-	  _inherits(CreateUser, _Component);
+	var CreateEditUser = function (_Component) {
+	  _inherits(CreateEditUser, _Component);
 
-	  function CreateUser(props) {
-	    _classCallCheck(this, CreateUser);
+	  function CreateEditUser(props) {
+	    _classCallCheck(this, CreateEditUser);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CreateUser).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CreateEditUser).call(this, props));
 
 	    _this.state = {};
 	    if (props.params.userId) {
@@ -25897,7 +25897,7 @@
 	    return _this;
 	  }
 
-	  _createClass(CreateUser, [{
+	  _createClass(CreateEditUser, [{
 	    key: 'getUser',
 	    value: function getUser(userId) {
 	      var _this2 = this;
@@ -25977,10 +25977,10 @@
 	    }
 	  }]);
 
-	  return CreateUser;
+	  return CreateEditUser;
 	}(_react.Component);
 
-	exports.default = CreateUser;
+	exports.default = CreateEditUser;
 
 /***/ },
 /* 230 */
@@ -27216,7 +27216,7 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _users = __webpack_require__(250);
+	var _user = __webpack_require__(250);
 
 	var _store = __webpack_require__(251);
 
@@ -27230,22 +27230,22 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by deepaksisodiya on 06/06/16.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-	var Hello = function (_Component) {
-	  _inherits(Hello, _Component);
+	var ShowUsers = function (_Component) {
+	  _inherits(ShowUsers, _Component);
 
-	  function Hello(props) {
-	    _classCallCheck(this, Hello);
+	  function ShowUsers(props) {
+	    _classCallCheck(this, ShowUsers);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Hello).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ShowUsers).call(this, props));
 
-	    _store.store.dispatch((0, _users.getUsers)());
+	    _store.store.dispatch((0, _user.getUsers)());
 	    _this.state = {
 	      users: _store.store.getState().user.users || []
 	    };
 	    return _this;
 	  }
 
-	  _createClass(Hello, [{
+	  _createClass(ShowUsers, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var _this2 = this;
@@ -27260,7 +27260,7 @@
 	  }, {
 	    key: 'deleteUser',
 	    value: function deleteUser(userId) {
-	      _store.store.dispatch((0, _users.deleteUser)(userId));
+	      _store.store.dispatch((0, _user.deleteUser)(userId));
 	    }
 	  }, {
 	    key: 'editUser',
@@ -27365,10 +27365,10 @@
 	    }
 	  }]);
 
-	  return Hello;
+	  return ShowUsers;
 	}(_react.Component);
 
-	exports.default = Hello;
+	exports.default = ShowUsers;
 
 /***/ },
 /* 250 */
@@ -28338,14 +28338,14 @@
 
 	var _redux = __webpack_require__(252);
 
-	var _users = __webpack_require__(250);
+	var _user = __webpack_require__(250);
 
 	/**
 	 * Created by deepaksisodiya on 06/06/16.
 	 */
 
 	exports.default = (0, _redux.combineReducers)({
-	  user: _users.reducer
+	  user: _user.reducer
 	});
 
 /***/ }

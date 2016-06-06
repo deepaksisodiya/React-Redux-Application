@@ -6,7 +6,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-class CreateUser extends Component {
+class CreateEditUser extends Component {
 
   constructor(props) {
     super(props);
@@ -81,4 +81,4 @@ class CreateUser extends Component {
 
 }
 
-export default CreateUser;
+export default CreateEditUser;
