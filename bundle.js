@@ -28276,6 +28276,22 @@
 	      });
 	    }
 	  }, {
+	    key: 'editUser',
+	    value: function editUser() {
+	      var _this4 = this;
+
+	      console.log('editing the user');
+	      _axios2.default.put('http://localhost:3000/user/' + this.props.params.userId, {
+	        name: this.state.name,
+	        location: this.state.location
+	      }).then(function (response) {
+	        console.log(response);
+	        _this4.props.history.push('/');
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
 	    key: 'handleChangeForName',
 	    value: function handleChangeForName(e) {
 	      this.setState({ name: e.target.value });
@@ -28294,7 +28310,11 @@
 	        null,
 	        _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChangeForName.bind(this) }),
 	        _react2.default.createElement('input', { type: 'text', value: this.state.location, onChange: this.handleChangeForLocation.bind(this) }),
-	        _react2.default.createElement(
+	        this.props.params.userId ? _react2.default.createElement(
+	          'button',
+	          { onClick: this.editUser.bind(this) },
+	          'Update'
+	        ) : _react2.default.createElement(
 	          'button',
 	          { onClick: this.createUser.bind(this) },
 	          'Create'

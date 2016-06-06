@@ -49,6 +49,21 @@ class CreateUser extends Component {
       });
   }
 
+  editUser() {
+    console.log('editing the user');
+    axios.put('http://localhost:3000/user/' + this.props.params.userId, {
+      name: this.state.name,
+      location: this.state.location
+    })
+      .then((response) => {
+        console.log(response);
+        this.props.history.push('/')
+      })
+      .catch((response) => {
+        console.log(response);
+      });
+  }
+
   handleChangeForName(e) {
     this.setState({name: e.target.value});
   }
@@ -63,7 +78,7 @@ class CreateUser extends Component {
       <div>
         <input type="text" value={this.state.name} onChange={this.handleChangeForName.bind(this)} />
         <input type="text" value={this.state.location} onChange={this.handleChangeForLocation.bind(this)} />
-        <button onClick={this.createUser.bind(this)}>Create</button>
+        {this.props.params.userId ? <button onClick={this.editUser.bind(this)}>Update</button> : <button onClick={this.createUser.bind(this)}>Create</button>}
       </div>
     )
   }
