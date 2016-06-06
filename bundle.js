@@ -112,8 +112,20 @@
 	      });
 	    }
 	  }, {
+	    key: 'deleteUser',
+	    value: function deleteUser(userId) {
+	      console.log('deleting the user ', userId);
+	      _axios2.default.delete('http://localhost:3000/user/' + userId).then(function (response) {
+	        console.log(response);
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -155,6 +167,11 @@
 	              'th',
 	              null,
 	              'Location'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Delete'
 	            )
 	          ),
 	          this.state.users && this.state.users.map(function (user) {
@@ -170,6 +187,17 @@
 	                'td',
 	                null,
 	                user.location
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  { onClick: function onClick() {
+	                      _this3.deleteUser(user.userId);
+	                    } },
+	                  'Delete'
+	                )
 	              )
 	            );
 	          })

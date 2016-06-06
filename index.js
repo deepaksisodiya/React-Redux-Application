@@ -34,6 +34,17 @@ export default class Hello extends Component {
     });
   }
 
+  deleteUser(userId) {
+    console.log('deleting the user ', userId);
+    axios.delete('http://localhost:3000/user/' + userId)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (response) {
+        console.log(response);
+      });
+  }
+
   render() {
     return(
       <div>
@@ -54,12 +65,14 @@ export default class Hello extends Component {
           <tr>
             <th>Name</th>
             <th>Location</th>
+            <th>Delete</th>
           </tr>
           {
             this.state.users && this.state.users.map((user) => {
               return <tr key={user.userId}>
                 <td>{user.name}</td>
                 <td>{user.location}</td>
+                <td><a onClick={() => {this.deleteUser(user.userId)}} >Delete</a></td>
               </tr>
             })
           }
