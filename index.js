@@ -11,6 +11,10 @@ import {getUsers} from './redux/users';
 
 import {store} from './redux/store';
 
+import { Router, Route, Link, browserHistory } from 'react-router'
+
+import CreateUser from './createUser';
+
 export default class Hello extends Component {
 
   constructor(props) {
@@ -43,6 +47,10 @@ export default class Hello extends Component {
         }
         `}</style>
         <h1>Hello React</h1>
+        <ul>
+          <li><Link to="/create">/create</Link></li>
+        </ul>
+        <CreateUser />
         <table>
           <tr>
             <th>Name</th>
@@ -63,4 +71,9 @@ export default class Hello extends Component {
 
 }
 
-ReactDOM.render(<Hello />, document.getElementById('container'));
+ReactDOM.render((
+  <Router>
+    <Route path="/" component={Hello}></Route>
+    <Route path="/create" component={CreateUser}></Route>
+  </Router>
+), document.getElementById('container'));
