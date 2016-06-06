@@ -11,7 +11,7 @@ import {getUsers} from './redux/users';
 
 import {store} from './redux/store';
 
-import { Router, Route, Link, browserHistory } from 'react-router'
+import { Router, Route, Link, hashHistory } from 'react-router'
 
 import CreateUser from './createUser';
 
@@ -71,7 +71,7 @@ export default class Hello extends Component {
 }
 
 ReactDOM.render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={Hello}></Route>
     <Route path="/create" component={CreateUser}></Route>
   </Router>

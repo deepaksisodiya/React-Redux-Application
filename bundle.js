@@ -186,7 +186,7 @@
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
-	  { history: _reactRouter.browserHistory },
+	  { history: _reactRouter.hashHistory },
 	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: Hello }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _createUser2.default })
 	), document.getElementById('container'));
@@ -28188,7 +28188,8 @@
 	  _createClass(CreateUser, [{
 	    key: 'createUser',
 	    value: function createUser() {
-	      console.log('state ', this.state);
+	      var _this2 = this;
+
 	      (0, _axios2.default)({
 	        method: 'post',
 	        url: 'http://localhost:3000/user',
@@ -28197,18 +28198,21 @@
 	          location: this.state.location
 	        },
 	        headers: { "Access-Control-Allow-Origin": "*" }
+	      }).then(function (response) {
+	        console.log('name ', _this2.props);
+	        _this2.props.history.push('/');
+	      }).catch(function (response) {
+	        console.log(response);
 	      });
 	    }
 	  }, {
 	    key: 'handleChangeForName',
 	    value: function handleChangeForName(e) {
-	      console.log('name ', e.target.value);
 	      this.setState({ name: e.target.value });
 	    }
 	  }, {
 	    key: 'handleChangeForLocation',
 	    value: function handleChangeForLocation(e) {
-	      console.log('name ', e.target.value);
 	      this.setState({ location: e.target.value });
 	    }
 	  }, {

@@ -22,7 +22,13 @@ class CreateUser extends Component {
         location: this.state.location
       },
       headers: { "Access-Control-Allow-Origin": "*" }
-    });
+    }).then((response) => {
+        console.log('name ', this.props);
+        this.props.history.push('/')
+    })
+      .catch((response) => {
+        console.log(response);
+      });
   }
 
   handleChangeForName(e) {
