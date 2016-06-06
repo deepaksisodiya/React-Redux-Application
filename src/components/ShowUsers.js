@@ -16,13 +16,13 @@ export default class Hello extends Component {
     super(props);
     store.dispatch(getUsers());
     this.state = {
-      users: store.getState().users.users || []
+      users: store.getState().user.users || []
     };
   }
 
   componentDidMount() {
     store.subscribe(() => {
-      let users = store.getState().users.users;
+      let users = store.getState().user.users;
       this.setState({
         users: users || []
       });

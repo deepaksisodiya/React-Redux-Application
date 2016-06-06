@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const ALL_USERS = 'ALL_USERS';
 
-export function reducer(state = [], action) {
+export function reducer(state = {}, action) {
   switch(action.type) {
     case ALL_USERS:
       return Object.assign({}, state, {users: action.data});

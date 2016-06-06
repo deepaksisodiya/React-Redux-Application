@@ -27240,7 +27240,7 @@
 
 	    _store.store.dispatch((0, _users.getUsers)());
 	    _this.state = {
-	      users: _store.store.getState().users.users || []
+	      users: _store.store.getState().user.users || []
 	    };
 	    return _this;
 	  }
@@ -27251,7 +27251,7 @@
 	      var _this2 = this;
 
 	      _store.store.subscribe(function () {
-	        var users = _store.store.getState().users.users;
+	        var users = _store.store.getState().user.users;
 	        _this2.setState({
 	          users: users || []
 	        });
@@ -27400,7 +27400,7 @@
 	                              */
 
 	function reducer() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -28337,7 +28337,7 @@
 	 */
 
 	exports.default = (0, _redux.combineReducers)({
-	  users: _users.reducer
+	  user: _users.reducer
 	});
 
 /***/ }
