@@ -27272,6 +27272,11 @@
 	      this.props.history.push('/edit/' + userId);
 	    }
 	  }, {
+	    key: 'goToCreate',
+	    value: function goToCreate() {
+	      this.props.history.push('/create');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
@@ -27290,17 +27295,9 @@
 	          'Hello React'
 	        ),
 	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/create' },
-	              '/create'
-	            )
-	          )
+	          'button',
+	          { onClick: this.goToCreate.bind(this) },
+	          'Create User'
 	        ),
 	        _react2.default.createElement(
 	          'table',

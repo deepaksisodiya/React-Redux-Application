@@ -43,6 +43,10 @@ export default class Hello extends Component {
     this.props.history.push('/edit/' + userId);
   }
 
+  goToCreate() {
+    this.props.history.push('/create');
+  }
+
   render() {
     return(
       <div>
@@ -56,9 +60,7 @@ export default class Hello extends Component {
         }
         `}</style>
         <h1>Hello React</h1>
-        <ul>
-          <li><Link to="/create">/create</Link></li>
-        </ul>
+        <button onClick={this.goToCreate.bind(this)}>Create User</button>
         <table>
           <tr>
             <th>Name</th>
