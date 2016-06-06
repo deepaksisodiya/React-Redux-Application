@@ -140,7 +140,6 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement(_createUser2.default, null),
 	        _react2.default.createElement(
 	          'table',
 	          null,
@@ -187,7 +186,7 @@
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
-	  null,
+	  { history: _reactRouter.browserHistory },
 	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: Hello }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _createUser2.default })
 	), document.getElementById('container'));
@@ -28160,6 +28159,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _axios = __webpack_require__(168);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28173,19 +28176,54 @@
 	var CreateUser = function (_Component) {
 	  _inherits(CreateUser, _Component);
 
-	  function CreateUser() {
+	  function CreateUser(props) {
 	    _classCallCheck(this, CreateUser);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CreateUser).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CreateUser).call(this, props));
+
+	    _this.state = {};
+	    return _this;
 	  }
 
 	  _createClass(CreateUser, [{
+	    key: 'createUser',
+	    value: function createUser() {
+	      console.log('state ', this.state);
+	      (0, _axios2.default)({
+	        method: 'post',
+	        url: 'http://localhost:3000/user',
+	        data: {
+	          name: this.state.name,
+	          location: this.state.location
+	        },
+	        headers: { "Access-Control-Allow-Origin": "*" }
+	      });
+	    }
+	  }, {
+	    key: 'handleChangeForName',
+	    value: function handleChangeForName(e) {
+	      console.log('name ', e.target.value);
+	      this.setState({ name: e.target.value });
+	    }
+	  }, {
+	    key: 'handleChangeForLocation',
+	    value: function handleChangeForLocation(e) {
+	      console.log('name ', e.target.value);
+	      this.setState({ location: e.target.value });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Create User'
+	        _react2.default.createElement('input', { type: 'text', value: this.state.name, onChange: this.handleChangeForName.bind(this) }),
+	        _react2.default.createElement('input', { type: 'text', value: this.state.location, onChange: this.handleChangeForLocation.bind(this) }),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.createUser.bind(this) },
+	          'Create'
+	        )
 	      );
 	    }
 	  }]);

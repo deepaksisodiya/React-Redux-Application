@@ -50,7 +50,6 @@ export default class Hello extends Component {
         <ul>
           <li><Link to="/create">/create</Link></li>
         </ul>
-        <CreateUser />
         <table>
           <tr>
             <th>Name</th>
@@ -72,7 +71,7 @@ export default class Hello extends Component {
 }
 
 ReactDOM.render((
-  <Router>
+  <Router history={browserHistory}>
     <Route path="/" component={Hello}></Route>
     <Route path="/create" component={CreateUser}></Route>
   </Router>
