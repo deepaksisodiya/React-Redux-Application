@@ -27288,7 +27288,7 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'Hello React'
+	          'React Redux Application'
 	        ),
 	        _react2.default.createElement(
 	          'button',
@@ -27415,19 +27415,13 @@
 	};
 
 	var deleteUser = exports.deleteUser = function deleteUser(userId) {
-
 	  return function (dispatch, getState) {
-
 	    return _axios2.default.delete('http://localhost:3000/user/' + userId).then(function (response) {
-
-	      console.log('name ', response);
-
 	      var users = getState().user.users.filter(function (user) {
 	        if (user.userId != userId) {
 	          return user;
 	        }
 	      });
-
 	      dispatch({ type: ALL_USERS, data: users });
 	    }).catch(function (response) {
 	      console.log(response);

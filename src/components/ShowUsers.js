@@ -53,7 +53,7 @@ export default class Hello extends Component {
             padding: 8px;
         }
         `}</style>
-        <h1>Hello React</h1>
+        <h1>React Redux Application</h1>
         <button onClick={this.goToCreate.bind(this)}>Create User</button>
         <table>
           <tr>
