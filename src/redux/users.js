@@ -27,3 +27,20 @@ export const getUsers = () => {
       });
   }
 };
+
+export const deleteUser = (userId) => {
+  return (dispatch, getState) => {
+    return axios.delete('http://localhost:3000/user/' + userId)
+      .then((response) => {
+        let users = getState().user.users.filter((user) => {
+          if(user.userId != userId) {
+            return user;
+          }
+        });
+        dispatch({type: ALL_USERS, data: users});
+      })
+      .catch((response) => {
+        console.log(response);
+      });
+  }
+};

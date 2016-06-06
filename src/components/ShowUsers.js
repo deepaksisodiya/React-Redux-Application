@@ -7,7 +7,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router'
 
-import {getUsers} from '../redux/users';
+import {getUsers, deleteUser} from '../redux/users';
 import {store} from '../redux/store';
 
 export default class Hello extends Component {
@@ -30,13 +30,7 @@ export default class Hello extends Component {
   }
 
   deleteUser(userId) {
-    axios.delete('http://localhost:3000/user/' + userId)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (response) {
-        console.log(response);
-      });
+    store.dispatch(deleteUser(userId));
   }
 
   editUser(userId) {
