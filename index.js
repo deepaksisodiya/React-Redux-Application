@@ -7,11 +7,16 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import {getUsers} from './redux/users';
+
 export default class Hello extends Component {
 
   constructor(props) {
     super(props);
     this.state = {};
+
+    getUsers();
+
     axios.get('http://localhost:3000/users')
       .then((response) => {
         console.log(response);

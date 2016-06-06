@@ -64,6 +64,8 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _users = __webpack_require__(187);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -83,6 +85,9 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Hello).call(this, props));
 
 	    _this.state = {};
+
+	    (0, _users.getUsers)();
+
 	    _axios2.default.get('http://localhost:3000/users').then(function (response) {
 	      console.log(response);
 	      _this.setState({
@@ -21632,6 +21637,49 @@
 	  };
 	};
 
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getUsers = undefined;
+	exports.reducer = reducer;
+
+	var _axios = __webpack_require__(168);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ALL_USERS = 'ALL_USERS'; /**
+	                              * Created by deepaksisodiya on 06/06/16.
+	                              */
+
+	function reducer() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case ALL_USERS:
+	      return Object.assign({}, state, { users: action.data });
+	    default:
+	      return state;
+	  }
+	}
+
+	var getUsers = exports.getUsers = function getUsers() {
+	  _axios2.default.get('http://localhost:3000/users').then(function (response) {
+	    console.log(response);
+	    dispatch({ type: ALL_USERS, data: response.data });
+	  }).catch(function (response) {
+	    console.log(response);
+	  });
+	};
 
 /***/ }
 /******/ ]);
